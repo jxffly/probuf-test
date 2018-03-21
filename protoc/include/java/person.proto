@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package tutorial;
+
+option java_package = "com.example.tutorial";
+option java_outer_classname = "PeopleFactory";
+option java_multiple_files = true;
+option java_generate_equals_and_hash = true;
+message Person {
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
+    repeated PhoneNumber phones = 4;
+    int32 page = 5;// Which page number do we want?
+    int32 pageNum = 6;// Number of results to return per page.
+
+    enum PhoneType {
+        MOBILE = 0 ;
+        HOME = 1;
+        WORK = 2;
+    }
+
+    message PhoneNumber {
+        string number = 1;
+        PhoneType type = 2;
+    }
+
+}
+
+message AddressBook {
+    repeated Person people = 1;
+}
